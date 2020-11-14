@@ -8,81 +8,79 @@
 //      - isSolving
 //      - interactions
 //      - numberWrittens
-//      - events	
+//      - events
 // 	- methods:
 //      - registerEvents()
 // 		- new(matrix);
 // 		- startSolving();
-//      - interacted() -> used by children modules to notify a game interaction 
+//      - interacted() -> used by children modules to notify a game interaction
 // 		- redraw() -> call p5js redraw method: this will be used by is children when a update is needed
 
-// Matrix empty param will make sense when the game is ready to cosume a sudoku generator 
+// Matrix empty param will make sense when the game is ready to cosume a sudoku generator
 function Game(matrix = [], delay = { time: 0 }) {
-    this.matrix = matrix;
-    this.delay = delay;
-    this.solver = false;
-    this.board = false;
-    this.isSolving = false;
-    this.interactions = 0;
-    this.events = {};
-    
-    const newGame = (matrix) => {
-        // Create board
-        this.board = new Board(matrix);
+	this.matrix = matrix;
+	this.delay = delay;
+	this.solver = false;
+	this.board = false;
+	this.isSolving = false;
+	this.interactions = 0;
+	this.events = {};
 
-        // Create solver
-        this.solver = new Solver(matrix, this);
-    }
+	const newGame = (matrix) => {
+		// Create board
+		this.board = new Board(matrix);
 
+		// Create solver
+		this.solver = new Solver(matrix, this);
+	};
 
-    const registerEvents = () => {
-        const interaction = new Event('interaction');
-        this.events.interaction = interaction;
+	const registerEvents = () => {
+		const interaction = new Event("interaction");
+		this.events.interaction = interaction;
 
-        const resolved = new Event('resolved');
-        this.events.resolved = resolved;
-    }
+		const resolved = new Event("resolved");
+		this.events.resolved = resolved;
+	};
 
-    // Called once, and then the steps (current interation number) will be passed to the draw function
-    this.startSolving = () => {
-        // Algorithm
-        this.isSolving = true;
-        this.solver.solve(this.matrix);
-    }
+	// Called once, and then the steps (current interation number) will be passed to the draw function
+	this.startSolving = () => {
+		// Algorithm
+		this.isSolving = true;
+		this.solver.solve(this.matrix);
+	};
 
-    this.redraw = () => {
-        background(0);
-        this.board.draw();
-    }
+	this.redraw = () => {
+		background(0);
+		this.board.draw();
+	};
 
-    this.interacted = () => {
-        this.interactions++;
-        window.interactionsNumber = this.interactions;
-        window.dispatchEvent(this.events.interaction);
+	this.interacted = () => {
+		this.interactions++;
+		window.interactionsNumber = this.interactions;
+		window.dispatchEvent(this.events.interaction);
 
-        return this.interactions;
-    }
+		return this.interactions;
+	};
 
-    this.done = () => {
-        this.isSolving = false;
-        window.dispatchEvent(this.events.resolved);
-    }
+	this.done = () => {
+		this.isSolving = false;
+		window.dispatchEvent(this.events.resolved);
+	};
 
-    this.countEmptyCells = () => {
-        let emptyCells = 0;
-        for(let i = 0; i < this.matrix.length; i++) {
-            for(let j = 0; j < this.matrix[0].length; j++) {
-                if(this.matrix[i][j] === 0) {
-                    emptyCells++;
-                }
-            }
+	this.countEmptyCells = () => {
+		let emptyCells = 0;
+		for (let i = 0; i < this.matrix.length; i++) {
+			for (let j = 0; j < this.matrix[0].length; j++) {
+				if (this.matrix[i][j] === 0) {
+					emptyCells++;
+				}
+			}
+		}
 
-        }
+		return emptyCells;
+	};
 
-        return emptyCells;
-    }
-
-    // Start
-    newGame(this.matrix);
-    registerEvents();
+	// Start
+	newGame(this.matrix);
+	registerEvents();
 }
