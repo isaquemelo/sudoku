@@ -11,7 +11,7 @@
 }
 
 .container {
-    max-width: 60%;
+    max-width: 70%;
 
     display: flex;
     align-items: center;
@@ -178,6 +178,73 @@ button#start-over .spinner {
 
 .resolved footer, .resolved footer a{
     color: #111;
+}
+
+@media (max-width: 1024px) {
+    #app {
+        height: auto;
+        padding: 60px 15px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        flex-direction: column;
+    }
+
+    #canvas-wrapper {
+        margin-bottom: 30px;
+        position: relative;
+        padding-top: 100%;
+        left: 0;
+        height: 0;
+        width: 100%;
+    }
+
+    #app:not(.resolved) #canvas-wrapper canvas, #app #canvas-wrapper canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-shadow: none;
+
+        /* I know ;( its such a pain to use such kind of horror, but thats what we have for today */
+        width: 100%!important;
+        height: 100%!important;
+    }
+
+    .itens-container {
+        margin-left: 0;
+    }
+
+    .item-container {
+        flex-direction: column;
+    }
+
+    .item-container .description{
+        border-right: 0;
+        border-bottom: 3px solid;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        max-width: 100%;
+        min-width: 100%;
+    }
+
+    .item-container .side-information {
+        width: auto;
+        height: auto;
+    }
+
+    footer {
+        position: initial;
+        margin-top: 60px;
+    }
+
+    button#start-over {
+        bottom: 20px;
+        top: auto;
+        right: 20px;
+        left: auto;
+    }
 }
 
 @keyframes spin { 
