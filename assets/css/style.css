@@ -1,0 +1,187 @@
+#app {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
+    transition: all .2s ease-in;
+}
+
+.container {
+    max-width: 60%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itens-container {
+    margin-left: 60px;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: 28px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+
+    /* text-shadow: 2px 2px 0px rgba(0,0,0,0.4); */
+}
+
+.item-container:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+.item-container label {
+    margin-bottom: 15px;
+}
+
+.item-container .description {
+    border-right: 3px solid;
+    padding-right: 5px;
+    
+    max-width: 235px;
+    min-width: 235px;
+}
+
+.item-container span.small {
+    display: block;
+    font-size: 14px;
+    line-height: 16px;
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+.item-container .side-information {
+    width: 135px;
+    height: 60px;
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    position: absolute;
+    bottom: 25px;
+}
+
+footer a {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+input#delay-ranger {
+    margin-top: 25px;
+    width: calc(100% - 20px);
+    appearance: none;
+    height: 5px;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.3);
+    outline: none;
+}
+
+input#delay-ranger::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; 
+    height: 20px; 
+    background: white; 
+    border-radius: 50%;
+    cursor: pointer; /* Cursor on hover */
+}
+
+button#start-over {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px -3px rgba(0,0,0,0.75);
+}
+
+button#start-over svg{
+    width: 20px;
+    color: rgba(0,0,0,0.9);
+}
+
+button#start-over {
+    transition: all .2s ease-in-out;
+    outline: none;
+}
+
+button#start-over:hover{
+    transform: rotate(90deg);
+    transition: all .2s ease-in-out;
+}
+
+button#start-over div:not(.active) {
+    display: none;
+} 
+
+
+
+
+
+button#start-over .spinner {
+    animation: spin .4s linear infinite;
+}
+
+
+/* Transitional styles */
+#app.resolved {
+    transition: all .2s ease-in;
+    /* background-color: #2c9e2c; */
+    background-color: white;
+}
+
+#app.resolved canvas {
+    transition: all .2s ease-in;
+    box-shadow: 10px 10px 0 -3px rgba(0,0,0,1);
+}
+
+
+#app:not(.resolved) canvas {
+    transition: all .2s ease-in;
+    box-shadow: 10px 10px 0 -3px rgba(255,255,255,0.2);
+}
+
+#app.resolved .item-container {
+    color: #111;
+}
+
+.resolved input#delay-ranger::-webkit-slider-thumb {
+    background-color: black;
+}
+
+.resolved input#delay-ranger {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.resolved footer, .resolved footer a{
+    color: #111;
+}
+
+@keyframes spin { 
+    100% { 
+        transform:rotate(360deg); 
+    }
+};

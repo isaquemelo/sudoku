@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sudoku solver</title>
+		<script src="assets/js/vendor/p5.min.js"></script>
+		<script src="assets/js/vendor/p5.dom.min.js"></script>
+		<script src="assets/js/vendor/p5.sound.min.js"></script>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css"
+		/>
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+
+		<meta charset="utf-8" />
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="container">
+				<div id="canvas-wrapper">
+
+				</div>
+				<div class="itens-container">
+					<div class="item-container">
+						<div class="description number-of-interactions">
+							<h4>
+								Interactions:
+							</h4>
+							<span class="small">how many times the recursive function was called</span>
+						</div>
+		
+						<div id="number-of-interactions" class="side-information">0x</div>
+					</div>
+					<div class="item-container">
+						<fieldset class="description">
+							<label for="delay-ranger">Delay between recursive calls:</label>
+							<input type="range" min="1" max="999" value="250" class="slider" id="delay-ranger">
+						</fieldset>
+
+						<div id="delay-ranger-text" class="side-information">250ms</div>
+					</div>
+
+					<div class="item-container">
+						<div class="description numbers-written">
+							<h4>
+								Numbers Missing:
+							</h4>
+							<span class="small">quantity of empty cells</span>
+						</div>
+		
+						<div id="empty-cells" class="side-information">0x</div>
+					</div>
+				</div>
+			</div>
+
+			<footer>
+				Made with &lt;3 by
+				<a href="https://github.com/isaquemelo" target="_blank">Isaque Melo</a>
+			</footer>
+
+			<button id="start-over">
+				<div class="spinner active">
+					<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="spinner-third" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-spinner-third fa-w-16 fa-3x"><path fill="currentColor" d="M456.433 371.72l-27.79-16.045c-7.192-4.152-10.052-13.136-6.487-20.636 25.82-54.328 23.566-118.602-6.768-171.03-30.265-52.529-84.802-86.621-144.76-91.424C262.35 71.922 256 64.953 256 56.649V24.56c0-9.31 7.916-16.609 17.204-15.96 81.795 5.717 156.412 51.902 197.611 123.408 41.301 71.385 43.99 159.096 8.042 232.792-4.082 8.369-14.361 11.575-22.424 6.92z" class=""></path></svg>
+				</div>
+				<div class="redo">
+					<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="redo" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-redo fa-w-16 fa-3x"><path fill="currentColor" d="M500.33 0h-47.41a12 12 0 0 0-12 12.57l4 82.76A247.42 247.42 0 0 0 256 8C119.34 8 7.9 119.53 8 256.19 8.1 393.07 119.1 504 256 504a247.1 247.1 0 0 0 166.18-63.91 12 12 0 0 0 .48-17.43l-34-34a12 12 0 0 0-16.38-.55A176 176 0 1 1 402.1 157.8l-101.53-4.87a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12h200.33a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12z" class=""></path></svg>
+				</div>
+			</button>
+		</div>
+
+		<script src="assets/js/functions.js"></script>
+		<script src="assets/js/cell.js"></script>
+		<script src="assets/js/board.js"></script>
+		<script src="assets/js/solver.js"></script>
+		<script src="assets/js/game.js"></script>
+		<script src="assets/js/sketch.js"></script>
+	</body>
+</html>
