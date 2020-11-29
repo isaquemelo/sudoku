@@ -93,7 +93,7 @@ function Solver(matrix = [], game = false) {
 				const boxX = positionX;
 				const boxY = positionY;
 				let removedElements = 0;
-				const suposeToRemove = Math.floor(random(3, 6));
+				const suposeToRemove = Math.floor(random(4, 7));
 				// console.log("boxX", boxX)
 				// console.log("boxY", boxY)
 				// console.log("suposeToRemove", suposeToRemove)
@@ -105,7 +105,11 @@ function Solver(matrix = [], game = false) {
 								matrix[i][j] = 0;
 								removedElements++;
 							}
+							
+							if(removedElements >= suposeToRemove ) break;
 						}
+						
+						if(removedElements >= suposeToRemove ) break;
 					}
 				}
 			}
